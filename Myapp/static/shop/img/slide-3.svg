@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="600" viewBox="0 0 1400 600" role="img" aria-label="Weekend edit">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a65f2b"/>
+      <stop offset="1" stop-color="#e8c39e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="600" fill="url(#bg)"/>
+  <rect x="860" y="120" width="460" height="360" rx="28" fill="rgba(255,255,255,0.16)"/>
+  <text x="90" y="230" fill="#1e140c" font-family="Segoe UI, Arial, sans-serif" font-size="60" font-weight="700">Weekend Edit</text>
+  <text x="90" y="300" fill="#1e140c" font-family="Segoe UI, Arial, sans-serif" font-size="28" opacity="0.9">Light layers and statement details.</text>
+  <text x="90" y="410" fill="rgba(30,20,12,0.8)" font-family="Segoe UI, Arial, sans-serif" font-size="22">Swipe for highlights</text>
+</svg>

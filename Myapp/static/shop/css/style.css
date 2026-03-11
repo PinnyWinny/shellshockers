@@ -1,0 +1,91 @@
+body {
+    background-color: #f7efe5;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Carousel */
+
+.boutique-carousel {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+}
+
+.boutique-carousel img {
+    height: 320px;
+    object-fit: cover;
+}
+
+/* Navbar */
+
+.boutique-nav {
+    background-color: #a05a2c;
+}
+
+.boutique-nav .nav-link,
+.navbar-brand {
+    color: #fff !important;
+}
+
+/* Hero */
+
+.hero {
+    background: #e8c39e;
+    border-radius: 10px;
+}
+
+/* Cards */
+
+.boutique-card {
+    border: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.boutique-product-img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.boutique-cart-thumb {
+    width: 64px;
+    height: 64px;
+    border-radius: 10px;
+    object-fit: cover;
+    background: rgba(255,255,255,0.7);
+    border: 1px solid rgba(0,0,0,0.08);
+}
+
+.boutique-summary {
+    min-width: 320px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.boutique-detail-img {
+    border-radius: 12px;
+    background: rgba(255,255,255,0.5);
+}
+
+/* Buttons */
+
+.boutique-btn {
+    background-color: #c97b3a;
+    color: white;
+    border: none;
+}
+
+.boutique-btn:hover {
+    background-color: #a65f2b;
+}
+
+/* Footer */
+
+.boutique-footer {
+    background-color: #a05a2c;
+    color: white;
+}
+
+@media (max-width: 576px) {
+    .boutique-carousel img {
+        height: 220px;
+    }
+}

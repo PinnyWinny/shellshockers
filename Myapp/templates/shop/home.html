@@ -1,0 +1,100 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="hero-boutique">
+    <div class="hero-overlay"></div>
+
+    <div class="container text-center hero-content">
+        <h1 class="hero-title">This is ShockerVuitton</h1>
+        <p class="hero-subtitle">Where Style Meets Elegance</p>
+
+        <a href="{% url 'products' %}" class="btn btn-dark btn-lg shop-btn">
+            Explore Collection
+        </a>
+    </div>
+
+    <div class="floating-items">
+        <span class="item">👗</span>
+        <span class="item">👜</span>
+        <span class="item">👠</span>
+        <span class="item">💎</span>
+    </div>
+</section>
+
+
+<div id="boutiqueCarousel" class="carousel slide boutique-carousel mb-4" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#boutiqueCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#boutiqueCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#boutiqueCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'shop/img/slide-1.svg' %}" class="d-block w-100" alt="New arrivals">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'shop/img/slide-2.svg' %}" class="d-block w-100" alt="Curated picks">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'shop/img/slide-3.svg' %}" class="d-block w-100" alt="Weekend edit">
+    </div>
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#boutiqueCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#boutiqueCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<div class="hero text-center p-4 mb-4">
+  <h1 class="mb-2">Elegant Warm Fashion</h1>
+  <p class="mb-0">Curated boutique pieces crafted with elegance</p>
+</div>
+
+<div class="row">
+
+{% for product in products %}
+
+<div class="col-md-3">
+<div class="card boutique-card">
+
+{% if product.image %}
+<img src="{{ product.image.url }}" class="card-img-top boutique-product-img" alt="{{ product.name }}">
+  {% elif product.slug and 'cardigan' in product.slug %}
+  <img src="{% static 'shop/img/cardigan.webp' %}" class="card-img-top boutique-product-img" alt="{{product.name}}">
+  {% elif product.slug and 'sienna-tote' in product.slug %}
+  <img src="{% static 'shop/img/sienna tote.jpeg' %}" class="card-img-top boutique-product-img" alt="{{product.name}}">
+  {% elif product.slug and 'belt' in product.slug %}
+  <img src="{% static 'shop/img/Untitled.jpeg' %}" class="card-img-top boutique-product-img" alt="{{product.name}}">
+  {% elif product.slug and 'scarf' in product.slug %}
+  <img src="{% static 'shop/img/scarf.jpeg' %}" class="card-img-top boutique-product-img" alt="{{product.name}}">
+{% else %}
+<img src="{% static 'shop/img/product-placeholder.svg' %}" class="card-img-top boutique-product-img" alt="No image available">
+{% endif %}
+
+
+<div class="card-body">
+<h5>{{ product.name }}</h5>
+<p>Ksh{{ product.price }}</p>
+
+<a href="{% url 'product_detail' product.id %}"
+class="btn boutique-btn">
+View
+</a>
+
+</div>
+</div>
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

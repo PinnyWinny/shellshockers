@@ -1,0 +1,43 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="row">
+
+<div class="col-md-6">
+{% if product.image %}
+<img src="{{ product.image.url }}" class="img-fluid boutique-detail-img" alt="{{ product.name }}">
+{% elif product.slug and 'cardigan' in product.slug %}
+<img src="{% static 'shop/img/cardigan.webp' %}" class="card-img-top boutique-product-img" alt="{{product.name}}">
+{% elif product.slug and 'sienna-tote' in product.slug %}
+<img src="{% static 'shop/img/sienna tote.jpeg' %}" class="card-img-top boutique-product-img" alt="{{product.name}}">
+{% elif product.slug and 'belt' in product.slug %}
+<img src="{% static 'shop/img/Untitled.jpeg' %}" class="card-img-top boutique-product-img" alt="{{product.name}}">
+{% elif product.slug and 'scarf' in product.slug %}
+<img src="{% static 'shop/img/scarf.jpeg' %}" class="card-img-top boutique-product-img" alt="{{product.name}}">
+{% else %}
+<img src="{% static 'shop/img/product-placeholder.svg' %}" class="img-fluid boutique-detail-img" alt="No image available">
+{% endif %}
+</div>
+
+<div class="col-md-6">
+
+<h2>{{ product.name }}</h2>
+
+<p>{{ product.description }}</p>
+
+<h4>Ksh{{ product.price }}</h4>
+
+<form method="post">
+  {% csrf_token %}
+  <button class="btn boutique-btn" type="submit"{% if product.stock <= 0 %} disabled{% endif %}>
+    {% if product.stock <= 0 %}Out of Stock{% else %}Add to Cart{% endif %}
+  </button>
+</form>
+
+</div>
+
+</div>
+
+{% endblock %}

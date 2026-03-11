@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="700" viewBox="0 0 900 700" role="img" aria-label="Product image placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7efe5"/>
+      <stop offset="1" stop-color="#e8c39e"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="700" fill="url(#bg)"/>
+  <rect x="90" y="90" width="720" height="520" rx="22" fill="rgba(160,90,44,0.14)"/>
+  <path d="M215 520 L360 380 L470 465 L585 325 L720 520 Z" fill="rgba(160,90,44,0.26)"/>
+  <circle cx="310" cy="300" r="56" fill="rgba(160,90,44,0.26)"/>
+  <text x="120" y="645" fill="rgba(30,20,12,0.65)" font-family="Segoe UI, Arial, sans-serif" font-size="26">No image</text>
+</svg>

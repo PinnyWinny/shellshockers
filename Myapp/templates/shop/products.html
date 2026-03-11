@@ -1,0 +1,65 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="d-flex flex-wrap align-items-end justify-content-between gap-3 mb-4">
+  <div>
+    <h2 class="mb-1">Our Collection</h2>
+    <div class="text-muted">Search, filter, and add to cart.</div>
+  </div>
+
+  <form class="d-flex gap-2" method="get" action="{% url 'products' %}">
+    <input class="form-control" type="search" name="q" value="{{ q }}" placeholder="Search products">
+    <select class="form-select" name="category">
+      <option value="">All categories</option>
+      {% for c in categories %}
+        <option value="{{ c.slug }}"{% if selected_category and selected_category.slug == c.slug %} selected{% endif %}>{{ c.name }}</option>
+      {% endfor %}
+    </select>
+    <button class="btn boutique-btn" type="submit">Search</button>
+  </form>
+</div>
+
+<div class="row">
+
+{% for product in products %}
+
+<div class="col-md-4 mb-4">
+
+<div class="card boutique-card">
+
+{% if product.image %}
+<img src="{{ product.image.url }}" class="card-img-top boutique-product-img" alt="{{ product.name }}">
+  {% elif product.slug and 'cardigan' in product.slug %}
+  <img src="{% static 'shop/img/cardigan.webp' %}" class="card-img-top boutique-product-img" alt="{{product.name}}">
+  {% elif product.slug and 'sienna-tote' in product.slug %}
+  <img src="{% static 'shop/img/sienna tote.jpeg' %}" class="card-img-top boutique-product-img" alt="{{product.name}}">
+  {% elif product.slug and 'belt' in product.slug %}
+  <img src="{% static 'shop/img/Untitled.jpeg' %}" class="card-img-top boutique-product-img" alt="{{product.name}}">
+  {% elif product.slug and 'scarf' in product.slug %}
+  <img src="{% static 'shop/img/scarf.jpeg' %}" class="card-img-top boutique-product-img" alt="{{product.name}}">
+    {% else %}
+  <img src="{% static 'shop/img/amberminibag.jpeg' %}" class="card-img-top boutique-product-img" alt="{{product.name}}">
+{% endif %}
+
+<div class="card-body">
+
+<h5>{{ product.name }}</h5>
+<p>Ksh{{ product.price }}</p>
+
+<div class="d-flex gap-2">
+  <a href="{% url 'product_detail' product.id %}" class="btn boutique-btn">View</a>
+  <a href="{% url 'cart_add' product.id %}" class="btn btn-outline-dark">Add</a>
+</div>
+
+</div>
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}
