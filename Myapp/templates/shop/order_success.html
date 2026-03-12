@@ -20,12 +20,12 @@
       {% for item in order.items.all %}
         <div class="d-flex justify-content-between border-bottom py-2">
           <div>{{ item.product_name }} <span class="text-muted">x{{ item.quantity }}</span></div>
-          <div class="fw-semibold">${{ item.unit_price }}</div>
+          <div class="fw-semibold">Ksh{{ item.unit_price }}</div>
         </div>
       {% endfor %}
       <div class="d-flex justify-content-between mt-3">
         <div class="text-muted">Total</div>
-        <div class="fw-semibold">${{ order.total_amount }}</div>
+        <div class="fw-semibold">Ksh{{ order.total_amount }}</div>
       </div>
     </div>
   </div>

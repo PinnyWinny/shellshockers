@@ -45,23 +45,64 @@
     {% endblock %}
 </div>
 
-<div id="chatbox">
-<input id="chat-input" placeholder="Ask our AI stylist...">
-<button onclick="askAI()">Send</button>
-<div id="chat-response"></div>
+<div id="chatbot">
+    <div id="chat-header">AI Shop Assistant</div>
+    <div id="chat-messages"></div>
+
+    <div id="chat-input-area">
+        <input type="text" id="chat-input" placeholder="Ask about products..." />
+        <button onclick="sendMessage()">Send</button>
+    </div>
 </div>
 
-<script>
-function askAI(){
-let msg=document.getElementById("chat-input").value;
-
-fetch(`/ai-chat/?message=${msg}`)
-.then(r=>r.json())
-.then(data=>{
-document.getElementById("chat-response").innerText=data.reply;
-});
+<style>
+#chatbot{
+position:fixed;
+bottom:20px;
+right:20px;
+width:300px;
+background:white;
+border:1px solid #ccc;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+font-family:Arial;
 }
-</script>
+
+#chat-header{
+background:#000;
+color:white;
+padding:10px;
+border-radius:10px 10px 0 0;
+}
+
+#chat-messages{
+height:250px;
+overflow-y:auto;
+padding:10px;
+}
+
+#chat-input-area{
+display:flex;
+border-top:1px solid #ccc;
+}
+
+#chat-input{
+flex:1;
+padding:8px;
+border:none;
+}
+
+#chat-input-area button{
+padding:8px 12px;
+background:black;
+color:white;
+border:none;
+cursor:pointer;
+}
+</style>
+
+
+
 
 <footer class="text-center p-4 boutique-footer">
     <p>© 2026 Shocker Vuitton</p>
@@ -76,3 +117,29 @@ document.addEventListener("DOMContentLoaded", function(){
 
 </body>
 </html>
+
+<script>
+function sendMessage(){
+
+let input = document.getElementById("chat-input")
+let message = input.value
+
+if(!message) return
+
+let messages = document.getElementById("chat-messages")
+
+messages.innerHTML += "<div><b>You:</b> " + message + "</div>"
+
+fetch("/ai-assistant/?message=" + encodeURIComponent(message))
+.then(response => response.json())
+.then(data => {
+
+messages.innerHTML += "<div><b>AI:</b> " + data.reply + "</div>"
+
+messages.scrollTop = messages.scrollHeight
+
+})
+
+input.value=""
+}
+</script>

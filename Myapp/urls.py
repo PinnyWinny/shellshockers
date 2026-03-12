@@ -12,5 +12,5 @@ urlpatterns = [
     path('order/<int:order_id>/success/', views.order_success, name='order_success'),
     path("accounts/signup/", views.signup, name="signup"),
     path('accounts/', include('django.contrib.auth.urls')),
-    path("ai-chat/", views.ai_assistant, name="ai_chat")
+    path("ai-assistant/", views.ai_assistant, name="ai_assistant"),
 ]

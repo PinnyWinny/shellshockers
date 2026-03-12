@@ -13,7 +13,7 @@ from .models import Category, Order, OrderItem, Product
 from django.http import JsonResponse
 from openai import OpenAI
 
-client = OpenAI()
+client = OpenAI(api_key="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")
 
 def ai_assistant(request):
     user_message = request.GET.get("message")
